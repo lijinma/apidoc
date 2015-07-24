@@ -336,6 +336,12 @@ require([
         if ($(id).length > 0)
             $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 0);
     }
+    
+    //customize
+    $('.remove-control-group').click(function(){
+        $(this).parent().parent().parent().remove();
+        return false;
+    });
 
     /**
      * Check if Parameter (sub) List has a type Field.
