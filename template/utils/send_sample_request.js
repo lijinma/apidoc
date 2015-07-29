@@ -48,7 +48,9 @@ define([
           $root.find("[data-sample-request-param-group=\"" + group + "\"]").each(function(i, element) {
             var key = $(element).data("sample-request-param-name");
             var value = element.value;
-            param[key] = $.type(value) === "string" ? escapeHtml(value) : value;
+            if (value) {
+              param[key] = $.type(value) === "string" ? escapeHtml(value) : value;
+            }
           });
       });
 
@@ -69,16 +71,29 @@ define([
       } // for
 
       // send AJAX request, catch success or error callback
-      $.ajax({
-          url: url,
-          dataType: "json",
-          contentType: "application/json",
-          data: JSON.stringify(param),
-          headers: header,
-          type: type.toUpperCase(),
-          success: displaySuccess,
-          error: displayError
-      });
+      if (type == 'get') {
+        $.ajax({
+            url: url + '?' + $.param(param),
+            dataType: "json",
+            contentType: "application/json",
+            headers: header,
+            type: type.toUpperCase(),
+            success: displaySuccess,
+            error: displayError
+        });
+      } else {
+        $.ajax({
+            url: url,
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(param),
+            headers: header,
+            type: type.toUpperCase(),
+            success: displaySuccess,
+            error: displayError
+        });
+      }
+
 
       function displaySuccess(data) {
           var jsonResponse;
