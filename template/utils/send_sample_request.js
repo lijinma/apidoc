@@ -49,7 +49,11 @@ define([
             var key = $(element).data("sample-request-param-name");
             var value = element.value;
             if (value) {
-              param[key] = $.type(value) === "string" ? escapeHtml(value) : value;
+              if ($(element).next().text().trim() == 'Object[]' || $(element).next().text().trim() == 'Object') {
+                param[key] = JSON.parse(value);
+              } else {
+                param[key] = $.type(value) === "string" ? escapeHtml(value) : value;
+              }
             }
           });
       });
