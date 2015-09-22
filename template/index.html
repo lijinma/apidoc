@@ -259,6 +259,7 @@
               <div class="input-prepend">>
                 <span class="add-on">{{__ "url"}}</span>
                 <input type="text" class="input-xxlarge sample-request-url" value="{{article.sampleRequest.0.url}}" />
+                <input type="button" name="format-url" class="format-url btn btn-success" value="准备参数">
               </div>
             </div>
           </div>
@@ -304,7 +305,7 @@
           <div class="sample-request-response" style="display: none;">
             <h3>
               {{__ "Response"}}
-              <button class="btn btn-small btn-default pull-right sample-request-clear">X</button>
+              <button class="btn btn-small btn-danger pull-right sample-request-clear">X</button>
             </h3>
             <pre class="prettyprint language-json" data-type="json"><code class="sample-request-response-json"></code></pre>
           </div>

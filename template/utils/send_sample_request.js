@@ -37,9 +37,14 @@ define([
           $(this).removeClass('btn-danger');
           $(this).addClass('btn-primary');
         }
-        
         return;
       });
+      $(".format-url").click(function(){
+        var url = $(this).prev().val();
+        url = url.replace(/:id|{id}|:userId|:userIds/g, 1);
+        $(this).prev().val(url);
+      });
+      
   }; // initDynamic
 
   function sendSampleRequest(group, name, version, type)
