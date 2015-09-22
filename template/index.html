@@ -167,7 +167,8 @@
 <script id="template-article-param-block" type="text/x-handlebars-template">
   {{#if params}}
     {{#each params.fields}}
-      <h2>{{__ @key}}</h2>
+      <h2>{{__ @key}} <input type="button" class="show-block btn btn-primary" value="显示"></h2>
+      <div class="my-block" style="display:none;">
       <table>
         <thead>
           <tr>
@@ -200,6 +201,7 @@
       {{/each}}
         </tbody>
       </table>
+    </div>
     {{/each}}
 
     {{#if_gt params.examples.length compare=0}}
@@ -228,6 +230,30 @@
       <h2>{{__ "Send a Sample Request"}}</h2>
       <form class="form-horizontal">
         <fieldset>
+          {{#if article.header}}
+            {{#if article.header.fields}}
+              <h3>{{__ "Headers"}} <input  type="button" class="show-block btn btn-primary" value="显示"></h3>
+              <div class="my-block" style="display:none;">
+              {{#each article.header.fields}}
+                <h4><input type="radio" data-sample-request-header-group-id="sample-request-header-{{@index}}" name="{{../id}}-sample-request-header" value="{{@index}}" class="sample-request-header sample-request-switch"{{#if_eq @index compare=0}} checked{{/if_eq}}> {{@key}}</h4>
+                <div class="{{../id}}-sample-request-header-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
+                  {{#each this}}
+                  <div class="control-group">
+                    <label class="control-label" for="sample-request-header-field-{{field}}">{{field}}</label>
+                    <div class="controls">
+                      <div class="input-append">>
+                        <input type="text" placeholder="{{field}}" {{#if defaultValue}}value="{{defaultValue}}"{{/if}} class="input-xxlarge sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}">
+                        <span class="add-on">{{type}}</span>
+                      </div>
+                    </div>
+                  </div>
+                  {{/each}}
+                </div>
+              {{/each}}
+            </div>
+            {{/if}}
+          {{/if}}
+          
           <div class="control-group">
             <div class="controls">
               <div class="input-prepend">>
@@ -237,27 +263,6 @@
             </div>
           </div>
 
-      {{#if article.header}}
-        {{#if article.header.fields}}
-          <h3>{{__ "Headers"}}</h3>
-          {{#each article.header.fields}}
-            <h4><input type="radio" data-sample-request-header-group-id="sample-request-header-{{@index}}" name="{{../id}}-sample-request-header" value="{{@index}}" class="sample-request-header sample-request-switch"{{#if_eq @index compare=0}} checked{{/if_eq}}> {{@key}}</h4>
-            <div class="{{../id}}-sample-request-header-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
-              {{#each this}}
-              <div class="control-group">
-                <label class="control-label" for="sample-request-header-field-{{field}}">{{field}}</label>
-                <div class="controls">
-                  <div class="input-append">>
-                    <input type="text" placeholder="{{field}}" {{#if defaultValue}}value="{{defaultValue}}"{{/if}} class="input-xxlarge sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}">
-                    <span class="add-on">{{type}}</span>
-                  </div>
-                </div>
-              </div>
-              {{/each}}
-            </div>
-          {{/each}}
-        {{/if}}
-      {{/if}}
 
       {{#if article.parameter}}
         {{#if article.parameter.fields}}
@@ -292,7 +297,7 @@
 
           <div class="control-group">
             <div class="controls">
-              <button class="btn btn-default sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
+              <button class="btn btn-success sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
             </div>
           </div>
 

@@ -24,6 +24,22 @@ define([
           var version = $root.data("version");
           clearSampleRequest(group, name, version);
       });
+      
+      $(".show-block").click(function(){
+        if ($(this).val() == '显示') {
+          $(this).parent().next().show();
+          $(this).val('隐藏');
+          $(this).removeClass('btn-primary');
+          $(this).addClass('btn-danger');
+        } else {
+          $(this).parent().next().hide();
+          $(this).val('显示');
+          $(this).removeClass('btn-danger');
+          $(this).addClass('btn-primary');
+        }
+        
+        return;
+      });
   }; // initDynamic
 
   function sendSampleRequest(group, name, version, type)
