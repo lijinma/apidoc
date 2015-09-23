@@ -227,7 +227,8 @@
 
 <script id="template-article-sample-request" type="text/x-handlebars-template">
     {{#if article.sampleRequest}}
-      <h2>{{__ "Send a Sample Request"}}</h2>
+    <hr>
+      <!-- <h2>{{__ "Send a Sample Request"}}</h2> -->
       <form class="form-horizontal">
         <fieldset>
           {{#if article.header}}
@@ -259,7 +260,6 @@
               <div class="input-prepend">>
                 <span class="add-on">{{__ "url"}}</span>
                 <input type="text" class="input-xxlarge sample-request-url" value="{{article.sampleRequest.0.url}}" />
-                <input type="button" name="format-url" class="format-url btn btn-success" value="准备参数">
               </div>
             </div>
           </div>
@@ -298,7 +298,7 @@
 
           <div class="control-group">
             <div class="controls">
-              <button class="btn btn-success sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
+              <button class="btn btn-success sample-request-send" data-sample-request-type="{{article.type}}">准备参数 & {{__ "Send"}}</button>
             </div>
           </div>
 

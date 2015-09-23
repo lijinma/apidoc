@@ -39,11 +39,6 @@ define([
         }
         return;
       });
-      $(".format-url").click(function(){
-        var url = $(this).prev().val();
-        url = url.replace(/:id|{id}|:userIds|:userId/g, 1);
-        $(this).prev().val(url);
-      });
       
   }; // initDynamic
 
@@ -81,6 +76,10 @@ define([
 
       // grab user-inputted URL
       var url = $root.find(".sample-request-url").val();
+      
+      // update params in url
+      url = url.replace(/:id|{id}|:userIds|:userId/g, 1);
+      $root.find(".sample-request-url").val(url);
 
       // Insert url parameter
       var pattern = pathToRegexp(url, null);

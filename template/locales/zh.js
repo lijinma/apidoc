@@ -1,6 +1,6 @@
 define({
     zh: {
-        'Allowed values:'             : '允許值:',
+        'Allowed values:'             : '允许值:',
         'Compare all with predecessor': '预先比较所有',
         'compare changes to:'         : '比较变更:',
         'compared to'                 : '对比',
@@ -14,12 +14,12 @@ define({
         'optional'                    : '选项',
         'Parameter'                   : '参数',
         'Permission:'                 : '允许:',
-        'Response'                    : '響應',
-        'Send'                        : '發送',
-        'Send a Sample Request'       : '發送樣品申請',
+        'Response'                    : '响应',
+        'Send'                        : '发送',
+        'Send a Sample Request'       : '发送一个样本',
         'show up to version:'         : '显示到版本:',
-        'Size range:'                 : '尺寸範圍:',
+        'Size range:'                 : '尺寸范围:',
         'Type'                        : '类型',
-        'url'                         : '網址'
+        'url'                         : '网址'
     }
 });
