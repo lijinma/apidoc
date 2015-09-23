@@ -41,7 +41,7 @@ define([
       });
       $(".format-url").click(function(){
         var url = $(this).prev().val();
-        url = url.replace(/:id|{id}|:userId|:userIds/g, 1);
+        url = url.replace(/:id|{id}|:userIds|:userId/g, 1);
         $(this).prev().val(url);
       });
       
