@@ -78,7 +78,7 @@ define([
       var url = $root.find(".sample-request-url").val();
       
       // update params in url
-      url = url.replace(/:id|{id}|:userIds|:userId/g, 1);
+      url = url.replace(/:ids|{ids}|:id|{id}|:userIds|:userId/g, 1);
       $root.find(".sample-request-url").val(url);
 
       // Insert url parameter
