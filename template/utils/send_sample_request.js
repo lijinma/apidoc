@@ -69,6 +69,8 @@ define([
                 param[key] = JSON.parse(value);
               } else if ($(element).next().text().trim() == 'Number') { //数字类型的要单独处理，否则会被转化成字符串
                 param[key] = Number(value);
+              } else if ($(element).next().text().trim() == 'RawString') { //数字类型的要单独处理，否则会被转化成字符串
+                param[key] = value;
               } else {
                 param[key] = $.type(value) === "string" ? escapeHtml(value) : value;
               }
